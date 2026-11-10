@@ -31,16 +31,15 @@
 
 ## 2. Карта проекта и источники
 
+Где что лежит — в `INDEX.md`. Прочитай его первым и открывай только нужные
+файлы по ссылкам оттуда. Сжатие статьи — `memory/L2.md`; PDF открывать только
+для сверки.
+
 `data/holes.csv` — запятая, столбцы `date,polariz,freq,area_holes`; 722
 строки, время только 03:00:00 и 07:00:00, `polariz` и `freq` постоянны
 (`I`, `3000`), подгрупп по ним нет. `data/gec-0km-2025.csv` — пробелы,
 15-минутный ряд за 2025 год, 34 944 строки, столбцы `Year … uqrg`.
 `data/gec-0km-2025-hours.csv` — производный файл этой задачи.
-
-`src/build_specific_gec.py` — фильтр GEC по моментам из `holes.csv`;
-`src/plot_gec.py` — график GEC в `cache/plot/gec.png`; `checks/check.py` —
-проверка результата, только чтение. `paper/Signature of the coronal hole
-near.pdf` и `paper/*.txt` — статья-кейс; `memory/L1.md`–`L3.md` — её сжатие.
 
 ### Чего агент не может знать сам
 
