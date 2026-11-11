@@ -3,6 +3,11 @@
 - `AGENTS.md` — правила работы агента в проекте.
 - `STATUS.md` — где работа сейчас; читать в начале сессии.
 - `diary.md` — журнал проекта; только дописывается.
+- `ontology.yaml` — онтология проекта: классы, отношения, правила; только чтение.
+- `ontology/` — заметки классов онтологии `<Класс>.md`, по одной на класс.
+- `tasks/` — заметки задач и подзадач со статусами и итогами.
+- `notes/` — заметки объектов работы: данные, расчёты; связи по `ontology.yaml`.
+- `.obsidian/` — настройки хранилища Obsidian (`app.json`, `graph.json`).
 - `cascade.sh` — каскадное сжатие статьи: части → L1 → L2 → L3.
 - `data/holes.csv` — площадь областей, похожих на CH, по моментам времени; только чтение.
 - `data/gec-0km-2025.csv` — исходный 15-минутный ряд GEC за 2025 г.; только чтение.
@@ -10,6 +15,7 @@
 - `src/build_specific_gec.py` — фильтр GEC: `load_hole_times()`, `filter_gec()`, `main()`.
 - `src/plot_gec.py` — график GEC, `main()`; пишет `cache/plot/gec.png`.
 - `checks/check.py` — проверка `data/gec-0km-2025-hours.csv`; только чтение.
+- `check_week4.py` — в проекте отсутствует (как и в стартовом наборе); проверка графа выполняется вручную по `AGENTS.md` и `ontology.yaml`.
 - `paper/Signature of the coronal hole near.pdf` — статья-кейс.
 - `paper/Signature of the coronal hole near.txt` — текст статьи из PDF.
 - `paper/parts/` — статья, разбитая на части для `cascade.sh`.
