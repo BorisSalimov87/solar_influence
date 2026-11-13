@@ -9,6 +9,8 @@
 - `data/gec-0km-2025-hours.csv` — GEC только для моментов из `data/holes.csv`; 720 строк, нет 2025-11-26.
 - `src/build_specific_gec.py` — фильтр GEC: `load_hole_times()`, `filter_gec()`, `main()`.
 - `src/plot_gec.py` — график GEC, `main()`; пишет `cache/plot/gec.png`.
+- `src/build_holes_gec_correlation.py` — Pearson r между `area_holes(t)` и
+  `uqrg(t+dt)` при заданной скорости ветра (км/с); без записи файлов.
 - `checks/check.py` — проверка `data/gec-0km-2025-hours.csv`; только чтение.
 - `paper/Signature of the coronal hole near.pdf` — статья-кейс.
 - `paper/Signature of the coronal hole near.txt` — текст статьи из PDF.
