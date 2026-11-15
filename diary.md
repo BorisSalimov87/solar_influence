@@ -262,3 +262,35 @@ FAIL: 2 hole times missing in GEC.
 - Итог проверки: принято — структура и числа совпали с планом, данные и `checks/`
   не изменены; коммит не создан, ждёт указания человека.
 
+## 2026-11-16 — Краткий README и быстрый старт
+- Запрос агенту:
+  Заменить однострочный
+  `README.md` краткой документацией на русском — назначение проекта, воспроизводимые
+  команды, описание трёх CSV, ссылки на подробные документы; `AGENTS.md` и
+  `ontology.yaml` не дублировать.
+- Что сделал агент:
+  Создал задачу `tasks/Написать документацию по проекту в README.md` и две
+  подзадачи, выполнил их по очереди. Переписал `README.md`: раздел «Быстрый старт»
+  с четырьмя командами из корня проекта, таблица `data/gec-0km-2025.csv`,
+  `data/holes.csv`, `data/gec-0km-2025-hours.csv` с числом строк, разделителями и
+  пропуском 2025-11-26, явная оговорка об ожидаемом `FAIL: 2 hole times missing in
+  GEC`, раздел «Документация». В `INDEX.md` добавил строку про `README.md`.
+  `src/build_specific_gec.py` и `src/plot_gec.py` не запускал: их файлы уже есть.
+- Результат:
+  `README.md` (три раздела), `INDEX.md` (+1 строка); обе подзадачи и верхняя задача
+  — `выполнена`, у каждой «Итог». `AGENTS.md`, `ontology.yaml`, `data/`, `checks/`
+  не изменялись.
+- Точка проверки:
+  `grep -n '^## ' README.md` → 7, 30, 41; `grep -n '1.5762 TECU' README.md` и
+  `grep -n 'FAIL: 2 hole times missing in GEC' README.md` → по одному совпадению;
+  `ls -l` по 15 путям из README → все существуют;
+  `.venv/bin/python src/calc_gec_average.py data/gec-0km-2025.csv` → код 0,
+  `Средний GEC (uqrg): 1.5762 TECU`; `.venv/bin/python checks/check.py` → код 1,
+  `OK: result file exists`, `OK: all rows have 03:00 or 07:00`,
+  `FAIL: 2 hole times missing in GEC`; `wc -l data/gec-0km-2025-hours.csv` → 721;
+  `git diff --stat -- data checks ontology.yaml` → пусто.
+- Итог проверки: принято — документация соответствует плану, числа и пути сверены,
+  данные и `checks/` не изменены; статус «принята» не ставился, коммит не создан,
+  оба ждут решения человека.
+
+
