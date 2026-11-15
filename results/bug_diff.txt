@@ -1,0 +1,11 @@
+--- src/build_specific_gec.py
++++ results/buggy_build_specific_gec.py
+@@ -15,7 +15,7 @@
+         date_part, time_part = d.split("T")
+         y, m, day = date_part.split("-")
+         h, mi, _ = time_part.split(":")
+-        hole_times.add((int(y), int(m), int(day), int(h), int(mi)))
++        hole_times.add((int(y), int(m), int(day), 0, int(mi)))
+     return hole_times
+ 
+ 

@@ -1,0 +1,8 @@
+Determinism: 3 consecutive runs of .venv/bin/python -m pytest tests -q
+
+run 1: exit 0; 45 passed in 5.61s; wall 6.29 s
+run 2: exit 0; 45 passed in 5.62s; wall 6.29 s
+run 3: exit 0; 45 passed in 5.31s; wall 5.92 s
+
+passed counts: [45, 45, 45]; spread = 0
+Verdicts are identical; elapsed seconds differ only by machine timing.

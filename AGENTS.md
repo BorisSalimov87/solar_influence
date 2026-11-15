@@ -385,3 +385,19 @@ Python 3.12 и пакеты из `.venv` (pandas, matplotlib, PyYAML); новы�
   `holes.csv` есть момент, которого нет в GEC; формат данных не совпал с описанием;
   для объекта нет класса в онтологии; правило требует экземпляр, которого нельзя
   создать честно.
+
+## 8. Проверка HW2 (верификатор)
+
+Одна команда из корня проекта:
+
+```
+.venv/bin/python -m pytest tests -q
+```
+
+Правило принятия: все тесты проходят (код 0). `tests/` проверяет `load_hole_times`,
+`filter_gec`, `src/calc_gec_average.py` и договор о данных; `checks/check.py`
+остаётся отдельной базовой линией и ожидаемо красный на 2025-11-26. Методика —
+`METHOD.md`, результаты — `results/`, отчёт — `REPORT.md`. Тесты только читают
+`src/`, `data/`, `checks/`; `src/build_specific_gec.py` не запускать. Воспроизведение
+«до» пойманной ошибки: `.venv/bin/python results/make_bug.py`, затем
+`GEC_SRC=results/buggy_build_specific_gec.py .venv/bin/python -m pytest tests -q`.

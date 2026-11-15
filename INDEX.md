@@ -16,6 +16,10 @@
 - `src/build_specific_gec.py` — фильтр GEC: `load_hole_times()`, `filter_gec()`, `main()`.
 - `src/plot_gec.py` — график GEC, `main()`; пишет `cache/plot/gec.png`.
 - `checks/check.py` — проверка `data/gec-0km-2025-hours.csv`; только чтение.
+- `METHOD.md` — методика HW2: юнит-тесты и проверка данных, записана до первого прогона.
+- `tests/` — юнит-тесты `load_hole_times`, `filter_gec`, `calc_gec_average.py` и договор о данных; только чтение `src/`, `data/`, `checks/`.
+- `results/` — прогоны, выводы «до»/«после», окружение, дерево подцелей и журнал попыток HW2.
+- `REPORT.md` — отчёт по HW2 по шаблону `.materials/HW_2/REPORT_TEMPLATE.md`.
 - `check_week4.py` — в проекте отсутствует (как и в стартовом наборе); проверка графа выполняется вручную по `AGENTS.md` и `ontology.yaml`.
 - `paper/Signature of the coronal hole near.pdf` — статья-кейс.
 - `paper/Signature of the coronal hole near.txt` — текст статьи из PDF.

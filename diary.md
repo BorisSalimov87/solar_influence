@@ -289,8 +289,33 @@ FAIL: 2 hole times missing in GEC.
   `OK: result file exists`, `OK: all rows have 03:00 or 07:00`,
   `FAIL: 2 hole times missing in GEC`; `wc -l data/gec-0km-2025-hours.csv` → 721;
   `git diff --stat -- data checks ontology.yaml` → пусто.
-- Итог проверки: принято — документация соответствует плану, числа и пути сверены,
+-   Итог проверки: принято — документация соответствует плану, числа и пути сверены,
   данные и `checks/` не изменены; статус «принята» не ставился, коммит не создан,
   оба ждут решения человека.
+
+## 2026-11-16 — HW2: верификатор GEC → holes
+- Запрос агенту:
+  Реализовать верификатор HW2
+  по `METHOD.md` — тесты `load_hole_times`, `filter_gec`, `calc_gec_average.py`,
+  проверка данных, `results/` с выводом «до»/«после», `REPORT.md`, документация.
+- Что сделал агент:
+  Создал задачу и 5 подзадач, выполнил их по очереди. Написал `tests/conftest.py`
+  и 5 файлов тестов (45 тестов); модуль загружается по `GEC_SRC`. Сгенерировал
+  `results/make_bug.py` и копию с ошибкой (час → 0), снял «до» (7 failed,
+  38 passed) и «после» (45 passed), 3 повтора, окружение и базовую линию.
+  Написал `REPORT.md` по шаблону; дополнил `AGENTS.md` (раздел 8), `README.md`,
+  `INDEX.md`, `.gitignore`.
+- Результат:
+  `tests/` — 45 тестов, все passed; `results/` — 10 файлов; `REPORT.md` — 10
+  разделов; `data/`, `checks/`, `src/`, `METHOD.md`, `ontology.yaml` не изменялись.
+- Точка проверки:
+  `.venv/bin/python -m pytest tests -q` → код 0, `45 passed`;
+  `GEC_SRC=results/buggy_build_specific_gec.py .venv/bin/python -m pytest tests -q`
+  → код 1, `7 failed, 38 passed`; `.venv/bin/python checks/check.py` → код 1,
+  `FAIL: 2 hole times missing in GEC`;
+  `git diff --stat -- data checks ontology.yaml METHOD.md src` → пусто.
+- Итог проверки: принято — все подзадачи и верхняя задача выполнены, правило
+  принятия HW2 выполнено. Статус «принята», коммит и метка `hw2` не ставились —
+  ждут решения человека.
 
 

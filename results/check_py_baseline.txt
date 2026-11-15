@@ -1,0 +1,6 @@
+exit code: 1
+--- stdout ---
+OK: result file exists
+OK: all rows have 03:00 or 07:00
+FAIL: 2 hole times missing in GEC
+--- stderr ---
