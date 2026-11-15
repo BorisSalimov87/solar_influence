@@ -12,7 +12,6 @@ def load_hole_times(holes: pd.DataFrame) -> set[tuple[int, int, int, int, int]]:
     """
     hole_times = set()
     for d in holes["date"]:
-        # d is like "2025-01-01T03:00:00"
         date_part, time_part = d.split("T")
         y, m, day = date_part.split("-")
         h, mi, _ = time_part.split(":")
