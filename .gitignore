@@ -6,3 +6,12 @@ __pycache__/
 .ipynb_checkpoints/
 .materials
 .kilo
+paper/solar_influence_article.aux
+paper/solar_influence_article.bbl
+paper/solar_influence_article.blg
+paper/solar_influence_article.fdb_latexmk
+paper/solar_influence_article.fls
+paper/solar_influence_article.log
+paper/solar_influence_article.out
+paper/solar_influence_article.pdf
+paper/solar_influence_article.synctex.gz
