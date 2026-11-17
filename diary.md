@@ -270,3 +270,27 @@ FAIL: 2 hole times missing in GEC.
   из каталога `paper`: `latexmk -g -pdf -interaction=nonstopmode -halt-on-error solar_influence_article.tex`.
 - Итог проверки: принято — код 0, в логе `[2 <../cache/plot/gec.png>]`;
   данные и `checks/` не изменены, коммит не создан.
+
+## 2026-11-16 — подборка статей о площади корональных дыр
+- Запрос агенту:
+  Из `library/lists/openalex_solar_oa.csv` выбрать 7 самых цитируемых статей
+  по утверждению «Насколько велика площадь корональных дыр по отношению к
+  площади Солнца», сложить PDF в `library/how_many_holes/pdf` и markdown в
+  `library/how_many_holes/md`; на статью не более 2 попыток скачивания.
+- Что сделал агент:
+  Отфильтровал 10 статей с этим утверждением, отсортировал по цитированиям,
+  взял 7 первых (433, 144, 129, 79, 57, 50, 47). Скачивал через OpenAlex
+  `locations[].pdf_url`: первая попытка — издательский PDF, вторая — arXiv
+  или репозиторий. Конвертировал `npx -y @firecrawl/anydoc`; для двух PDF
+  (`2009_LRSP_coronal_holes`, `2017_JGR_peak_velocity_ch_area`) anydoc
+  отказался из-за страниц без текстового слоя, для них текст извлечён
+  `pdftotext -layout` и размечен в markdown скриптом.
+- Результат:
+  6 PDF и 6 MD в `library/how_many_holes/`. Не скачалась одна статья:
+  `10.1029/2001ja007550` (Solar cycle changes in coronal holes and space
+  weather cycles, 144 цитирования) — Wiley `pdfdirect` вернул 403,
+  CiteSeerX — 404; лимит 2 попыток исчерпан, статья пропущена.
+- Точка проверки:
+  `for f in library/how_many_holes/pdf/*.pdf; do pdfinfo "$f"; done`.
+- Итог проверки: принято — 6 PDF открываются (14–61 страница), 6 MD
+  непустые (29–213 КБ); данные и `checks/` не изменены, коммит не создан.
