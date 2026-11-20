@@ -117,7 +117,7 @@
     \node[anchor=south west,inner sep=0,align=left,text=white]
       at (2.2,1.5) {%
         \begin{minipage}{134mm}
-          {\small Салимов Борис Гудратович, научный сотрудник}\\[1.2mm]
+          {\small Салимов Борис Гудратович, научный сотрудник ИСЗФ СО РАН}\\[1.2mm]
           {\small\color{lighttext}Научный руководитель: д.\,ф.-м.\,н.
             Ясюкевич Юрий Владимирович}\\[2.2mm]
           {\footnotesize\color{lighttext}г.\,Иркутск, 2026\,г.}
@@ -138,7 +138,7 @@
     {\scriptsize\color{muted}Сибирский радиогелиограф; регистрирация КД}};
   \node[card,anchor=north west,text width=6.1cm,minimum height=2.75cm] (c2) at (7.0,0) {%
     {\color{sun}\bfseries\large II}\\[0.4mm]
-    {\bfseries Площадь КД и GEC}\\[0.9mm]
+    {\bfseries Площадь КД и ионосфера}\\[0.9mm]
     {\scriptsize\color{muted}Годовой ряд 2025 года; корреляция $r=-0.272$}};
   \node[card,anchor=north west,text width=6.1cm,minimum height=2.75cm] (c3) at (0,-3.05) {%
     {\color{sun}\bfseries\large III}\\[0.4mm]
@@ -174,7 +174,7 @@
   \end{tabular}}\par\vspace{2.5mm}
   {\footnotesize
   \begin{itemize}
-    \item Измеряется круговая поляризация
+    \item Антенны с круговой поляризацией
     \item Решётки 3--6 и 6--12\,ГГц эквидистантные
     \item В 12--24\,ГГц шаг антенн растёт к краям
   \end{itemize}}
@@ -232,7 +232,7 @@
 \end{frame}
 
 % ---------------------------------------------------------------- 6
-\begin{frame}[t]{GEC за 2025 год}
+\begin{frame}[t]{GEC (глобальное электронное содержание) за 2025 год}
   \begin{center}
     \fig[height=3.85cm]{gec.png}
   \end{center}
@@ -490,7 +490,7 @@
 \begin{columns}[T,onlytextwidth]
 \begin{column}[T]{0.48\textwidth}
   \fig[width=\linewidth]{ml_scheme.jpeg}
-  \source{Схема: TecPredictionF10\_7.pptx.}
+  \source{}
 \end{column}
 \begin{column}[T]{0.50\textwidth}
   {\footnotesize
@@ -498,12 +498,11 @@
     \item Эмпирических моделей много, но их входы обычно недоступны
     \item Цель: минимум входных данных и их история
     \item Прогноз глобальных карт ПЭС на разные горизонты
-    \item Ключевой управляющий параметр --- индекс F10.7
+    \item Ключевой управляющий параметр --- солн. индекс F10.7
     \item Дополнительно --- признаки даты и времени
   \end{itemize}}
   \vspace{1.5mm}
-  {\scriptsize\color{muted}Между обучением и применением модель
-   использует только F10.7 и время.}
+  {\scriptsize\color{muted}}
 \end{column}
 \end{columns}
 \end{frame}
@@ -520,10 +519,10 @@
     \midrule
     Карты ПЭС & UQRG, 71$\times$72 \\
     Сетка & 5$^\circ$ по долготе $\times$ 2.5$^\circ$ по широте \\
-    Индекс F10.7 & январь 1998 --- март 2024, шаг 1\,ч \\
-    Обучение & 1998--2021 \\
-    Валидация & 2022 \\
-    Тест & 2023 --- март 2024 \\
+    Индекс F10.7 & январь 1998 г. --- март 2024 г., шаг 1\,ч \\
+    Обучение & 1998--2021 гг. \\
+    Валидация & 2022 г. \\
+    Тест & 2023 г. --- март 2024 г. \\
     \bottomrule
   \end{tabular}}
 \end{column}
@@ -531,15 +530,15 @@
   {\small\key{Признаки}}\par\vspace{1mm}
   {\footnotesize
   \begin{itemize}
-    \item $\sin$ и $\cos$ циклов: 24\,ч, 27, 182.62, 365.25 и 4020 сут
+    \item $\sin$ и $\cos$ циклов: 24\,ч, 27, 182.62, 365.25 и 4020 сут.
     \item F10.7 на момент отсчёта
     \item F10.7 за 24\,ч до момента
     \item Среднее и медиана F10.7 за 27 и 180 сут
   \end{itemize}}
   \vspace{2mm}
   \[
-    x_i=\sin\frac{2\pi t}{P_i},\qquad
-    y_i=\cos\frac{2\pi t}{P_i}
+    sin_i=\sin\frac{2\pi t}{P_i},\qquad
+    cos_i=\cos\frac{2\pi t}{P_i}
   \]
 \end{column}
 \end{columns}
@@ -677,7 +676,7 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
     {\color{sun}\bfseries\Large ML}\\[1.5mm]
     {\bfseries Экспертиза, нетворкинг}\\[1.2mm]
     {\scriptsize\color{muted}Обратная связь
-     по методам машинного обучения}};
+     по методам машинного обучения, сотрудничество}};
 \end{tikzpicture}
 \end{frame}
 
@@ -689,18 +688,17 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
     {\color{teal}\bfseries\large Темы исследований}\\[2mm]
     {\footnotesize
      \begin{itemize}
-       \item Сегментация корональных дыр
-       \item Прогноз карт TEC
-       \item Физически информированные модели
+       \item Научные задачи физики ближнего космоса, физики атмосферы
+       \item Обработка больших данных
      \end{itemize}}};
-  \node[card,anchor=north west,text width=6.2cm,minimum height=4.0cm] (b) at (7.2,0) {%
-    {\color{teal}\bfseries\large Доступ к инструментам}\\[2mm]
-    {\footnotesize
-     \begin{itemize}
-       \item Сибирский радиогелиограф
-       \item Ионозонды ИСЗФ
-       \item Ряды GEC/SIMuRG и архив изображений
-     \end{itemize}}};
+  % \node[card,anchor=north west,text width=6.2cm,minimum height=4.0cm] (b) at (7.2,0) {%
+  %   {\color{teal}\bfseries\large Доступ к инструментам}\\[2mm]
+  %   {\footnotesize
+  %    \begin{itemize}
+  %      \item Сибирский радиогелиограф
+  %      \item Ионозонды ИСЗФ
+  %      \item Ряды GEC/SIMuRG и архив изображений
+  %    \end{itemize}}};
 \end{tikzpicture}
 \end{frame}
 
