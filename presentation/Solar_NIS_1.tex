@@ -394,12 +394,11 @@
         (Shimeis et al., 2012; Liu et al., 2019; Younas et al., 2022)
 \end{itemize}}
 \vspace{1mm}
-{\scriptsize\color{muted}Но это событийный анализ или локализованный
- отклик, а не связь на годовом глобальном ряду.}
+{\scriptsize\color{muted}}
 \end{frame}
 
 % ---------------------------------------------------------------- 12
-\begin{frame}[t]{Ограничения и что дальше}
+\begin{frame}[t]{Ограничения и перспективы}
 \begin{columns}[T,onlytextwidth]
 \begin{column}[T]{0.485\textwidth}
   {\color{muted}\rule{\linewidth}{1.4pt}}\par\vspace{1.6mm}
@@ -418,7 +417,7 @@
   {\bfseries Что дальше}\par\vspace{1mm}
   {\footnotesize
   \begin{itemize}
-    \item ML-сегментация КД на радиоизображениях
+    \item ML-сегментация КД
     \item Положение и площадь КД на диске
     \item Скорость ветра для каждого события
   \end{itemize}}
@@ -448,8 +447,7 @@
           {\color{sun}\rule{26mm}{1.8pt}}\\[5mm]
           {\fontsize{22}{27}\selectfont\bfseries Ионосфера и прогноз ПЭС}\\[5mm]
           {\small\color{lighttext}Площадь КД --- лишь один из входов.
-           Чтобы проверить её вклад, нужен прогноз самой характеристики
-           ионосферы.}
+           Прогноз характеристики ионосферы (полного электронного содержания).}
         \end{minipage}};
     \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
       at (\paperwidth-1.0cm,0.7) {13\,/\,24};
@@ -480,8 +478,8 @@
   \begin{itemize}
     \item 1\,TECU $=10^{16}$ электронов/м$^2$
     \item GEC --- глобальная характеристика ионосферы
-    \item Зависит от EUV, геомагнитной активности, сезона и местного времени
-    \item Применения: навигация, ВЧ-связь
+    \item Зависит от излучения Солнца, геомагнитной активности
+    \item Применения: ГНСС-навигация, радиосвязь
   \end{itemize}}
 \end{column}
 \end{columns}
@@ -505,7 +503,7 @@
   \end{itemize}}
   \vspace{1.5mm}
   {\scriptsize\color{muted}Между обучением и применением модель
-   использует только F10.7 и календарь.}
+   использует только F10.7 и время.}
 \end{column}
 \end{columns}
 \end{frame}
@@ -520,7 +518,7 @@
     \toprule
     Параметр & Значение \\
     \midrule
-    Карты ПЭС & UQRG (UPC), 71$\times$72 \\
+    Карты ПЭС & UQRG, 71$\times$72 \\
     Сетка & 5$^\circ$ по долготе $\times$ 2.5$^\circ$ по широте \\
     Индекс F10.7 & январь 1998 --- март 2024, шаг 1\,ч \\
     Обучение & 1998--2021 \\
@@ -575,7 +573,7 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
     \item Прогноз на 2026-11-19, 01:00 UT
     \item Горизонт 7 суток, карта на конкретный час
     \item Шкала 0--90\,TECU, штриховая линия --- магнитный экватор
-    \item Воспроизведены экваториальные гребни ПЭС
+    \item Воспроизведены экваториальные аномалии ПЭС
   \end{itemize}
   \vspace{2mm}
   {\footnotesize\color{muted}Детализация ограничена сеткой GIM
@@ -595,7 +593,7 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
   {\footnotesize
   \begin{itemize}
     \item Выбор модели из списка доступных
-    \item Календарь дат: 586 прогнозов в архиве
+    \item Календарь дат
     \item Просмотр карты по часам, 0--23
     \item Выгрузка в \texttt{*.ionex} и \texttt{*.npz}
   \end{itemize}}
@@ -616,8 +614,8 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
 \begin{column}[T]{0.42\textwidth}
   \begin{itemize}
     \item RMSE растёт с горизонтом: 6.6\,TECU $\to$ 10.6\,TECU
-    \item На сутки лучше IRI-2016 (11.08) и Klobuchar (15.00)
-    \item Ошибки дают возмущения и разрешение GIM
+    % \item На сутки лучше IRI-2016 (11.08) и Klobuchar (15.00)
+    % \item Ошибки дают возмущения и разрешение GIM
     \item Развитие: учёт Kp и скорости ветра, ансамбли
   \end{itemize}
 \end{column}
@@ -668,18 +666,17 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
 \begin{tikzpicture}[x=1cm,y=1cm]
   \node[card,anchor=north west,text width=4.1cm,minimum height=4.3cm] (a) at (0,0) {%
     {\color{sun}\bfseries\Large GPU}\\[1.5mm]
-    {\bfseries Вычисления}\\[1.2mm]
-    {\scriptsize\color{muted}Обучение моделей на больших рядах
-     и глобальных картах TEC}};
+    {\bfseries Вычисления GPU}\\[1.2mm]
+    {\scriptsize\color{muted}Обучение моделей на больших рядах, использование CV}};
   \node[card,anchor=north west,text width=4.1cm,minimum height=4.3cm] (b) at (4.7,0) {%
     {\color{sun}\bfseries\Large LLM}\\[1.5mm]
     {\bfseries Токены}\\[1.2mm]
-    {\scriptsize\color{muted}Агентные пайплайны обработки данных
-     и научных текстов}};
+    {\scriptsize\color{muted}Агентные пайплайны для программирования,  
+     научных текстов}};
   \node[card,anchor=north west,text width=4.1cm,minimum height=4.3cm] (c) at (9.4,0) {%
     {\color{sun}\bfseries\Large ML}\\[1.5mm]
-    {\bfseries Экспертиза}\\[1.2mm]
-    {\scriptsize\color{muted}Нетворкинг и обратная связь
+    {\bfseries Экспертиза, нетворкинг}\\[1.2mm]
+    {\scriptsize\color{muted}Обратная связь
      по методам машинного обучения}};
 \end{tikzpicture}
 \end{frame}
