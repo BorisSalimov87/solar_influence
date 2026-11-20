@@ -82,50 +82,51 @@
 \begin{document}
 
 % ---------------------------------------------------------------- 1
-\begin{frame}[plain]
-\begin{tikzpicture}[remember picture,overlay]
-  \fill[navy] (current page.south west) rectangle (current page.north east);
-  \begin{scope}
-    \clip (current page.south west) rectangle (current page.north east);
-    \foreach \r in {3.0,3.9,4.8,5.7,6.6,7.5} {
-      \draw[sun,opacity=0.16,line width=0.6pt]
-        ($(current page.north east)+(-2.2,-2.2)$) circle[radius=\r];
-    }
-    \fill[sun,opacity=0.10]
-      ($(current page.north east)+(-2.2,-2.2)$) circle[radius=1.7];
-  \end{scope}
-  \fill[sun] ($(current page.south west)+(14mm,18mm)$) rectangle ++(1.4mm,30mm);
+{\setbeamertemplate{background canvas}{%
+  \begin{tikzpicture}[x=1cm,y=1cm]
+    \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+    \fill[navy] (0,0) rectangle (\paperwidth,\paperheight);
+    \begin{scope}
+      \clip (0,0) rectangle (\paperwidth,\paperheight);
+      \foreach \r in {3.0,3.9,4.8,5.7,6.6,7.5} {
+        \draw[sun,opacity=0.16,line width=0.6pt]
+          ($(\paperwidth,\paperheight)+(-2.2,-2.2)$) circle[radius=\r];
+      }
+      \fill[sun,opacity=0.10]
+        ($(\paperwidth,\paperheight)+(-2.2,-2.2)$) circle[radius=1.7];
+    \end{scope}
+    \fill[sun] (1.4,1.8) rectangle ++(0.14,3.0);
 
-  \node[anchor=north west,inner sep=0]
-    at ($(current page.north west)+(22mm,-14mm)$) {%
-      {\scriptsize\color{lighttext}\bfseries
-        ИНСТИТУТ СОЛНЕЧНО-ЗЕМНОЙ ФИЗИКИ СО РАН}};
-  \node[anchor=north west,inner sep=0]
-    at ($(current page.north west)+(22mm,-20mm)$) {%
-      {\color{sun}\rule{24mm}{1.8pt}}};
-  \node[anchor=north west,inner sep=0,align=left,text=white,text width=134mm]
-    at ($(current page.north west)+(22mm,-26mm)$) {%
-      {\fontsize{21}{26}\selectfont\bfseries
-        Взаимосвязь солнечного ветра\\[1mm]
-        и характеристик ионосферы Земли}};
-  \node[anchor=north west,inner sep=0,align=left]
-    at ($(current page.north west)+(22mm,-52mm)$) {%
-      {\normalsize\color{lighttext}
-        От корональных дыр к прогнозу полного электронного содержания}};
+    \node[anchor=north west,inner sep=0]
+      at (2.2,\paperheight-1.4cm) {%
+        {\scriptsize\color{lighttext}\bfseries
+          ИНСТИТУТ СОЛНЕЧНО-ЗЕМНОЙ ФИЗИКИ СО РАН}};
+    \node[anchor=north west,inner sep=0]
+      at (2.2,\paperheight-2.0cm) {%
+        {\color{sun}\rule{24mm}{1.8pt}}};
+    \node[anchor=north west,inner sep=0,align=left,text=white,text width=134mm]
+      at (2.2,\paperheight-2.6cm) {%
+        {\fontsize{21}{26}\selectfont\bfseries
+          Взаимосвязь солнечного ветра\\[1mm]
+          и характеристик ионосферы Земли}};
+    \node[anchor=north west,inner sep=0,align=left]
+      at (2.2,\paperheight-5.2cm) {%
+        {\normalsize\color{lighttext}
+          От корональных дыр к прогнозу полного электронного содержания}};
 
-  \node[anchor=south west,inner sep=0,align=left,text=white]
-    at ($(current page.south west)+(22mm,15mm)$) {%
-      \begin{minipage}{134mm}
-        {\small Салимов Борис Гудратович, научный сотрудник}\\[1.2mm]
-        {\small\color{lighttext}Научный руководитель: д.\,ф.-м.\,н.
-          Ясюкевич Юрий Владимирович}\\[2.2mm]
-        {\footnotesize\color{lighttext}г.\,Иркутск, 2026\,г.}
-      \end{minipage}};
+    \node[anchor=south west,inner sep=0,align=left,text=white]
+      at (2.2,1.5) {%
+        \begin{minipage}{134mm}
+          {\small Салимов Борис Гудратович, научный сотрудник}\\[1.2mm]
+          {\small\color{lighttext}Научный руководитель: д.\,ф.-м.\,н.
+            Ясюкевич Юрий Владимирович}\\[2.2mm]
+          {\footnotesize\color{lighttext}г.\,Иркутск, 2026\,г.}
+        \end{minipage}};
 
-  \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
-    at ($(current page.south east)+(-10mm,7mm)$) {1\,/\,24};
-\end{tikzpicture}
-\end{frame}
+    \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
+      at (\paperwidth-1.0cm,0.7) {1\,/\,24};
+  \end{tikzpicture}}
+\begin{frame}[plain]\vspace*{0pt}\end{frame}}
 
 % ---------------------------------------------------------------- 2
 \begin{frame}[t]{О чём доклад}
@@ -256,11 +257,11 @@
 \end{frame}
 
 % ---------------------------------------------------------------- 7
-\begin{frame}[t]{Радиоизображения СРХ}
+\begin{frame}[t]{Радиоизображения СРГ}
 \begin{columns}[T,onlytextwidth]
 \begin{column}[T]{0.35\textwidth}
   \fig[width=\linewidth]{srh_3ghz.png}
-  \source{Радиоизображение: СРХ, 3\,ГГц.}
+  \source{Радиоизображение: СРГ, 3\,ГГц.}
 \end{column}
 \begin{column}[T]{0.62\textwidth}
   {\footnotesize
@@ -430,30 +431,31 @@
 \end{frame}
 
 % ---------------------------------------------------------------- 13
-\begin{frame}[plain]
-\begin{tikzpicture}[remember picture,overlay]
-  \fill[navy] (current page.south west) rectangle (current page.north east);
-  \begin{scope}
-    \clip (current page.south west) rectangle (current page.north east);
-    \foreach \r in {2.6,3.5,4.4,5.3,6.2} {
-      \draw[sun,opacity=0.15,line width=0.6pt]
-        ($(current page.south east)+(2.0,2.4)$) circle[radius=\r];
-    }
-  \end{scope}
-  \node[anchor=west,inner sep=0,align=left,text=white]
-    at ($(current page.west)+(20mm,4mm)$) {%
-      \begin{minipage}{120mm}
-        {\fontsize{46}{50}\selectfont\bfseries\color{sun}II}\\[1mm]
-        {\color{sun}\rule{26mm}{1.8pt}}\\[5mm]
-        {\fontsize{22}{27}\selectfont\bfseries Ионосфера и прогноз ПЭС}\\[5mm]
-        {\small\color{lighttext}Площадь КД --- лишь один из входов.
-         Чтобы проверить её вклад, нужен прогноз самой характеристики
-         ионосферы.}
-      \end{minipage}};
-  \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
-    at ($(current page.south east)+(-10mm,7mm)$) {13\,/\,24};
-\end{tikzpicture}
-\end{frame}
+{\setbeamertemplate{background canvas}{%
+  \begin{tikzpicture}[x=1cm,y=1cm]
+    \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+    \fill[navy] (0,0) rectangle (\paperwidth,\paperheight);
+    \begin{scope}
+      \clip (0,0) rectangle (\paperwidth,\paperheight);
+      \foreach \r in {2.6,3.5,4.4,5.3,6.2} {
+        \draw[sun,opacity=0.15,line width=0.6pt]
+          ($(\paperwidth,0)+(2.0,2.4)$) circle[radius=\r];
+      }
+    \end{scope}
+    \node[anchor=west,inner sep=0,align=left,text=white]
+      at (2.0,0.5*\paperheight+0.4cm) {%
+        \begin{minipage}{120mm}
+          {\fontsize{46}{50}\selectfont\bfseries\color{sun}II}\\[1mm]
+          {\color{sun}\rule{26mm}{1.8pt}}\\[5mm]
+          {\fontsize{22}{27}\selectfont\bfseries Ионосфера и прогноз ПЭС}\\[5mm]
+          {\small\color{lighttext}Площадь КД --- лишь один из входов.
+           Чтобы проверить её вклад, нужен прогноз самой характеристики
+           ионосферы.}
+        \end{minipage}};
+    \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
+      at (\paperwidth-1.0cm,0.7) {13\,/\,24};
+  \end{tikzpicture}}
+\begin{frame}[plain]\vspace*{0pt}\end{frame}}
 
 % ---------------------------------------------------------------- 14
 \begin{frame}[t]{TEC и GEC}
@@ -655,7 +657,7 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
 \begin{tikzpicture}
   \node[fill=sun,text=white,rounded corners=2pt,inner sep=3.2mm,
         font=\small,text width=13.2cm,align=center]
-    {Данные СРХ \ + \ машинное обучение \ + \ ионосферные ряды\\[0.6mm]
+    {Данные СРГ \ + \ машинное обучение \ + \ ионосферные ряды\\[0.6mm]
      --- одна междисциплинарная задача};
 \end{tikzpicture}
 \end{center}
@@ -707,28 +709,29 @@ $\to$ 19 признаков; Dense(512)--Dropout--Dense(296) $\to$ Reshape $3\ti
 \end{frame}
 
 % ---------------------------------------------------------------- 24
-\begin{frame}[plain]
-\begin{tikzpicture}[remember picture,overlay]
-  \fill[navy] (current page.south west) rectangle (current page.north east);
-  \begin{scope}
-    \clip (current page.south west) rectangle (current page.north east);
-    \foreach \r in {2.8,3.7,4.6,5.5,6.4,7.3} {
-      \draw[sun,opacity=0.15,line width=0.6pt]
-        ($(current page.south west)+(-1.6,1.2)$) circle[radius=\r];
-    }
-  \end{scope}
-  \node[anchor=west,inner sep=0,align=left,text=white]
-    at ($(current page.west)+(20mm,10mm)$) {%
-      \begin{minipage}{120mm}
-        {\fontsize{30}{35}\selectfont\bfseries Спасибо за внимание}\\[3mm]
-        {\color{sun}\rule{26mm}{1.8pt}}\\[6mm]
-        {\normalsize Салимов Борис Гудратович}\\[1.5mm]
-        {\small\color{lighttext}Институт солнечно-земной физики СО РАН}\\[1.5mm]
-        {\small\color{lighttext}\texttt{salimov@iszf.irk.ru}}
-      \end{minipage}};
-  \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
-    at ($(current page.south east)+(-10mm,7mm)$) {24\,/\,24};
-\end{tikzpicture}
-\end{frame}
+{\setbeamertemplate{background canvas}{%
+  \begin{tikzpicture}[x=1cm,y=1cm]
+    \useasboundingbox (0,0) rectangle (\paperwidth,\paperheight);
+    \fill[navy] (0,0) rectangle (\paperwidth,\paperheight);
+    \begin{scope}
+      \clip (0,0) rectangle (\paperwidth,\paperheight);
+      \foreach \r in {2.8,3.7,4.6,5.5,6.4,7.3} {
+        \draw[sun,opacity=0.15,line width=0.6pt]
+          ($(0,0)+(-1.6,1.2)$) circle[radius=\r];
+      }
+    \end{scope}
+    \node[anchor=west,inner sep=0,align=left,text=white]
+      at (2.0,0.5*\paperheight+1.0cm) {%
+        \begin{minipage}{120mm}
+          {\fontsize{30}{35}\selectfont\bfseries Спасибо за внимание}\\[3mm]
+          {\color{sun}\rule{26mm}{1.8pt}}\\[6mm]
+          {\normalsize Салимов Борис Гудратович}\\[1.5mm]
+          {\small\color{lighttext}Институт солнечно-земной физики СО РАН}\\[1.5mm]
+          {\small\color{lighttext}\texttt{salimov@iszf.irk.ru}}
+        \end{minipage}};
+    \node[anchor=south east,inner sep=0,font=\scriptsize,text=lighttext]
+      at (\paperwidth-1.0cm,0.7) {24\,/\,24};
+  \end{tikzpicture}}
+\begin{frame}[plain]\vspace*{0pt}\end{frame}}
 
 \end{document}
